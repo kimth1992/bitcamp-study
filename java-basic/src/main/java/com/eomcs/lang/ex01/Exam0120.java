@@ -1,5 +1,6 @@
 package com.eomcs.lang.ex01;
 
-class Exam0110{
-}
+class A{}
+class B{}
+class C{}
 
