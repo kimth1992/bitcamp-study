@@ -5,7 +5,7 @@ package com.eomcs.pms;
 
 public class App {
     public String getGreeting() {
-        return "Hello World!";
+        return "안녕하세요!";
     }
 
     public static void main(String[] args) {
