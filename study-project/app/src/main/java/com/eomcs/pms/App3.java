@@ -7,10 +7,10 @@ public class App3 {
 
     System.out.printf("[%s]\n", "작업");
     System.out.printf("프로젝트: %s\n" ,"미니 프로젝트 관리 시스템 개발");
-    System.out.printf("번호:1\n");
-    System.out.printf("내용: 요구사항 수\n");
-    System.out.printf("완료일: 2020-01-20\n");
-    System.out.printf("상태: 진행중\n");
+    System.out.printf("번호:%d\n",1);
+    System.out.printf("내용: %s\n", "수정사항 등록");
+    System.out.printf("완료일: %s\n", "2020-01-20");
+    System.out.printf("상태: %s\n", "진행");
     System.out.printf("담당자: %s\n", "홍길동");
 
   }
