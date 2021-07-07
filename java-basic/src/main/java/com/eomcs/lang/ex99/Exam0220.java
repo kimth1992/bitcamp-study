@@ -1,5 +1,7 @@
 package com.eomcs.lang.ex99;
 
+
+
 //# 키보드 입력 받기 - 문자열 한 줄 읽기
 //
 public class Exam0220 {
@@ -32,6 +34,26 @@ public class Exam0220 {
     System.out.println(keyScan.nextLine());
 
     keyScan.close();
+
+
+    InputStream c = new InputStream();
+    int a =5;
+    int b = 4;
+    int d;
+    d= c.add(a, b);
+    System.out.println(d);
+    c.add2(a, b);
   }
+}
+
+class InputStream{
+
+  int add(int a, int b) {
+    return a+b;
+  }
+  void add2(int a, int b) {
+    System.out.println(a+b);
+  }
+
 }
 

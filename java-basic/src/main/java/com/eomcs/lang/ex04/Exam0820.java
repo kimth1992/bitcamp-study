@@ -4,7 +4,7 @@ package com.eomcs.lang.ex04;
 //
 public class Exam0820 {
   public static void main(String[] args) {
-    
+
     int a = 100;
 
     {
@@ -19,6 +19,7 @@ public class Exam0820 {
       // 그래서 b 변수는 제거된다.
     }
     System.out.println(a);
+    System.out.println(389/10%10);
 
     // 바깥 블록에서는 안쪽 블록의 변수를 사용할 수 없다.
     // 왜?
