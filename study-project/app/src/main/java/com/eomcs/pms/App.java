@@ -2,9 +2,21 @@ package com.eomcs.pms;
 
 import java.util.Scanner;
 
+// 1) 배열 사용 전
+// 2) 배열 사용 후
+// 3) 반복문 적용 : While 문
+// 4) 반복문 적용 : for 문
+// 5) 여러 문장에서 반복해 사용하는 값은 변수에 담아서 사용한다.
+// 6) 조회용으로만 사용할 변수라면 상수로 선언한다.
+// 7) 배열 사용 특정 조건에 따라 반복을 멈춘다.
+// 8) 날짜의 출력형식을 "yyyy-MM-dd"로 변경한다.
+
+
+
 public class App {
 
   public static void main(String[] args) {
+
     System.out.println("[회원]");
 
     // Scanner?
@@ -50,4 +62,6 @@ public class App {
     System.out.printf("가입일: %s\n", now);
   }
 
+
 }
+
