@@ -26,6 +26,5 @@ public class Exam0610 {
     final float PI = 3.14159f;
     final float MILE = 0.621371f;
 
-
   }
 }

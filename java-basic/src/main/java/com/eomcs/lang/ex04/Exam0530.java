@@ -6,7 +6,7 @@ public class Exam0530 {
   public static void main(String[] args) {
 
     int[] arr1 = new int[5];
-    
+
     // 배열 선언문 분석:
     // arr1
     //   - 배열 메모리의 주소를 담는 변수이다.
@@ -20,13 +20,14 @@ public class Exam0530 {
     //
     // new 명령은 메모리를 확보하는 명령이다.
     // - 리턴 값은 확보된 메모리의 시작 주소이다.
-    
+
     // 
     arr1 = new int[5];
 
     arr1[0] = 100; // arr1에 저장된 주소로 찾아가서 0번째 항목에 값을 넣어라!
     arr1[1] = 200; // arr1에 저장된 추소로 찾아가서 1번째 항목에 값을 넣어라!
 
+    System.out.println(arr1);
     System.out.println(arr1[0]);
     System.out.println(arr1[1]);
   }

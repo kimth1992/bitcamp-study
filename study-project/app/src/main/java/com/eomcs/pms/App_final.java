@@ -45,10 +45,7 @@ public class App_final {
 
       size++;
 
-
-
       boolean isExit = false;
-
 
       System.out.print("계속 입력하시겠습니까?(y/N)");
 
@@ -72,8 +69,6 @@ public class App_final {
 
       if(isExit)
         break;
-
-
     }
 
 

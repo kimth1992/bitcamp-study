@@ -46,7 +46,6 @@ public class App2 {
 
       size++;
 
-
       boolean isExit = false;
       System.out.println("계속 입력하시겠습니까?(y/N)");
 
@@ -77,7 +76,7 @@ public class App2 {
     System.out.println("--------------------------------");
 
     for(int i = 0; i < size; i++) {
-      System.out.printf("%d, %s, %s, %s, %s", no[i], title[i], startDate[i], endDate[i], owner[i]);
+      System.out.printf("%d, %s, %s, %s, %s\n", no[i], title[i], startDate[i], endDate[i], owner[i]);
     }
   }
 }

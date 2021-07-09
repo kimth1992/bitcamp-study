@@ -13,6 +13,7 @@ public class Exam0910 {
     float f;
     double d;
 
+    System.out.println(c);
     // 정수 변수의 값을 부동소수점 변수에 저장할 때 값이 짤릴 수 있다.
     //
     f = b; // byte(1) ==> float(4). 값을 그대로 저장.
