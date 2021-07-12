@@ -6,25 +6,28 @@ import java.util.Scanner;
 public class App2 {
 
   public static void main(String[] args) {
-
-    final int MAX = 100;
-
-    int[] no = new int[MAX];
-    String[] title = new String[MAX];
-    String[] content = new String[MAX];
-    Date[] startDate = new Date[MAX];
-    Date[] endDate = new Date[MAX];
-    String[] owner = new String[MAX];
-    String[] members = new String[MAX];
-
-
     System.out.println("[프로젝트]");
-    Scanner keyboardScan = new Scanner(System.in);
-    int size = 0;
-    for(int i = 0; i < MAX; i++) {
 
+    Scanner keyboardScan = new Scanner(System.in);
+
+    // 최대 100개의 프로젝트 정보를 저장할 메모리 준비
+    // => 배열의 크기를 미리 변수에 저장하여 사용한다.
+    // => 나중에 배열의 크기를 바꾸기 쉽다.
+    final int LENGTH = 100;
+    
+    int[] no = new int[LENGTH];
+    String[] title = new String[LENGTH];
+    String[] content = new String[LENGTH];
+    Date[] startDate = new Date[LENGTH];
+    Date[] endDate = new Date[LENGTH];
+    String[] owner = new String[LENGTH];
+    String[] members = new String[LENGTH];
+
+    int size = 0;
+    
+    for (int i = 0; i < LENGTH; i++) {
       System.out.print("번호? ");
-      no[i] = Integer.parseInt(keyboardScan.nextLine());
+      no[i] = Integer.valueOf(keyboardScan.nextLine());
 
       System.out.print("프로젝트명? ");
       title[i] = keyboardScan.nextLine();
@@ -45,38 +48,25 @@ public class App2 {
       members[i] = keyboardScan.nextLine();
 
       size++;
+      System.out.println(); // 빈 줄 출력
 
-      boolean isExit = false;
-      System.out.println("계속 입력하시겠습니까?(y/N)");
-
-      while(true) {
-        String input = keyboardScan.nextLine();
-        if(input.equalsIgnoreCase("n") || input.equals("")) {
-          isExit = true;
-          break;
-        }
-        else if(input.equalsIgnoreCase("y")) {
-          isExit = false;
-          break;
-        }
-        else {
-          System.out.println("잘못된 값을 입력하셨습니다. (y/N)중 하나를 입력해 주세요.");
-        }
-
-      }
-
-      if(isExit == true)
+      System.out.print("계속 입력하시겠습니까?(y/N) ");
+      String str = keyboardScan.nextLine();
+      if (!str.equalsIgnoreCase("y")) {
         break;
-
+      }
+      System.out.println(); // 빈 줄 출력
     }
-
 
     keyboardScan.close();
 
     System.out.println("--------------------------------");
 
-    for(int i = 0; i < size; i++) {
-      System.out.printf("%d, %s, %s, %s, %s\n", no[i], title[i], startDate[i], endDate[i], owner[i]);
+
+    for (int i = 0; i < size; i++) {
+      // 번호, 프로젝트명, 시작일, 종료일, 만든이
+      System.out.printf("%d, %s, %s, %s, %s\n", // 출력 형식 지정
+          no[i], title[i], startDate[i], endDate[i], owner[i]);
     }
   }
 }

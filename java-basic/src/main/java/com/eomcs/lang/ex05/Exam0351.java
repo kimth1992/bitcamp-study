@@ -9,6 +9,7 @@ public class Exam0351 {
     System.out.println(57 & 0b0000_0001);
     System.out.println(57 & 0x1);
     System.out.println(57 & 1);
+
     // % 연산은 나누기 연산을 수행해야 한다.
     // 나누기 연산은 여러 번의 계산을 수행하게 된다.
     // 그에 비해 & 비트 연산은 한 번만 하면 된다.
@@ -46,6 +47,9 @@ public class Exam0351 {
     // => 그럼에도 불구하고 이 연산자의 응용법을 익히는 이유는
     //    가끔 오픈소스나 고급 개발자의 코드에서
     //    이런 코드를 만나기 때문이다.
+
+    System.out.println(57 % 4);
+    System.out.println(57 & 0b11);
 
     System.out.println(57 % 8);
     System.out.println(57 & 0b111);
