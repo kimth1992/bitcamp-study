@@ -1,23 +1,25 @@
 package com.eomcs.pms;
 
-import java.util.Scanner;
+import com.eomcs.pms.handler.BoardHandler;
 import com.eomcs.pms.handler.MemberHandler;
 import com.eomcs.pms.handler.ProjectHandler;
 import com.eomcs.pms.handler.TaskHandler;
 import com.eomcs.util.Prompt;
 
-
-//1) 사용자로부터 입력 받는 일을 하는 메서드를 별도의 클래스로 분류한다. 
-//2) 회원 정보를 다루는 메서드를 별도의 클래스로 분류한다.
-//3) 프로젝트 정보를 다루는 메서드를 별도의 클래스로 분류한다.
-//4) 작업 정보를 다루는 메서드를 별도의 클래스로 분류한다.
-//5) 키보드 스캐너를 닫는 일은 그 스캐너를 갖고 있는 클래스에서 수행한다.
-//   => GRASP 에서 Information Expert 설계 기법 적용
 public class App {
 
-  static Scanner keyboardScan = new Scanner(System.in);
-
   public static void main(String[] args) {
+
+    // 각 게시판의 게시글을 담을 메모리(boards 레퍼런스 열 및 size)를 준비한다.
+
+    BoardHandler boardHandler = new BoardHandler();
+    BoardHandler boardHandler2 = new BoardHandler();
+    BoardHandler boardHandler3 = new BoardHandler();
+    BoardHandler boardHandler4 = new BoardHandler();
+    BoardHandler boardHandler5 = new BoardHandler();
+    BoardHandler boardHandler6 = new BoardHandler();
+
+
 
     while (true) {
       String input = Prompt.inputString("명령> ");
@@ -43,13 +45,61 @@ public class App {
       }  else if (input.equals("/task/list")) {
         TaskHandler.list();
 
+      }  else if (input.equals("/board/add")) {
+        BoardHandler.add(boardHandler);
+
+      }  else if (input.equals("/board/list")) {
+        BoardHandler.list(boardHandler);
+
+      }  else if (input.equals("/board2/add")) {
+        BoardHandler.add(boardHandler2);
+
+      }  else if (input.equals("/board2/list")) {
+        BoardHandler.list(boardHandler2);
+
+      }  else if (input.equals("/board3/add")) {
+        BoardHandler.add(boardHandler3);
+
+      }  else if (input.equals("/board3/list")) {
+        BoardHandler.list(boardHandler3);
+
+      }  else if (input.equals("/board4/add")) {
+        BoardHandler.add(boardHandler4);
+
+      }  else if (input.equals("/board4/list")) {
+        BoardHandler.list(boardHandler4);
+
+      }  else if (input.equals("/board5/add")) {
+        BoardHandler.add(boardHandler5);
+
+      }  else if (input.equals("/board5/list")) {
+        BoardHandler.list(boardHandler5);
+
+      }  else if (input.equals("/board6/add")) {
+        BoardHandler.add(boardHandler6);
+
+      }  else if (input.equals("/board6/list")) {
+        BoardHandler.list(boardHandler6);
+
       } else {
         System.out.println("실행할 수 없는 명령입니다.");
       }
       System.out.println();
     }
 
+    // Prompt 가 소유하고 관리하고 있는 자원을 닫으라고 명령한다. 
     Prompt.close();
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
