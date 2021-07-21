@@ -13,11 +13,9 @@ public class App {
     // 각 게시판의 게시글을 담을 메모리(boards 레퍼런스 열 및 size)를 준비한다.
 
     BoardHandler boardHandler = new BoardHandler();
-    BoardHandler boardHandler2 = new BoardHandler();
-    BoardHandler boardHandler3 = new BoardHandler();
-    BoardHandler boardHandler4 = new BoardHandler();
-    BoardHandler boardHandler5 = new BoardHandler();
-    BoardHandler boardHandler6 = new BoardHandler();
+    MemberHandler memberHandler = new MemberHandler();
+    ProjectHandler projectHandler = new ProjectHandler();
+    TaskHandler taskHandler = new TaskHandler();
 
 
 
@@ -28,60 +26,39 @@ public class App {
         System.out.println("안녕!");
         break;
       } else if (input.equals("/member/add")) {
-        MemberHandler.add();
+        memberHandler.add();
 
       } else if (input.equals("/member/list")) {
-        MemberHandler.list();
+        memberHandler.list();
 
       }  else if (input.equals("/project/add")) {
-        ProjectHandler.add();
+        projectHandler.add(memberHandler);
 
       }  else if (input.equals("/project/list")) {
-        ProjectHandler.list();
+        projectHandler.list();
 
       }  else if (input.equals("/task/add")) {
-        TaskHandler.add();
+        taskHandler.add(memberHandler);
 
       }  else if (input.equals("/task/list")) {
-        TaskHandler.list();
+        taskHandler.list();
 
-      }  else if (input.equals("/board/add")) {
-        BoardHandler.add(boardHandler);
+      }  else if (input.equals("1")) {
+        boardHandler.add();
 
-      }  else if (input.equals("/board/list")) {
-        BoardHandler.list(boardHandler);
+      }  else if (input.equals("2")) {
+        boardHandler.list();
 
-      }  else if (input.equals("/board2/add")) {
-        BoardHandler.add(boardHandler2);
+      }  else if(input.equals("/board/detail")) {
+        boardHandler.detail();
 
-      }  else if (input.equals("/board2/list")) {
-        BoardHandler.list(boardHandler2);
+      }  else if(input.equals("/board/update")) {
+        boardHandler.update();
 
-      }  else if (input.equals("/board3/add")) {
-        BoardHandler.add(boardHandler3);
+      }  else if(input.equals("3")) {
+        boardHandler.delete();
 
-      }  else if (input.equals("/board3/list")) {
-        BoardHandler.list(boardHandler3);
-
-      }  else if (input.equals("/board4/add")) {
-        BoardHandler.add(boardHandler4);
-
-      }  else if (input.equals("/board4/list")) {
-        BoardHandler.list(boardHandler4);
-
-      }  else if (input.equals("/board5/add")) {
-        BoardHandler.add(boardHandler5);
-
-      }  else if (input.equals("/board5/list")) {
-        BoardHandler.list(boardHandler5);
-
-      }  else if (input.equals("/board6/add")) {
-        BoardHandler.add(boardHandler6);
-
-      }  else if (input.equals("/board6/list")) {
-        BoardHandler.list(boardHandler6);
-
-      } else {
+      }  else {
         System.out.println("실행할 수 없는 명령입니다.");
       }
       System.out.println();
