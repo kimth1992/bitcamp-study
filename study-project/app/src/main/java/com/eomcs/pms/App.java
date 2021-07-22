@@ -20,6 +20,7 @@ public class App {
 
 
     while (true) {
+      System.out.println("명령어 : /member/add , list, detail, update, /project, /task, /board");
       String input = Prompt.inputString("명령> ");
 
       if (input.equals("exit") || input.equals("quit")) {
@@ -37,16 +38,22 @@ public class App {
       }  else if (input.equals("/project/list")) {
         projectHandler.list();
 
-      }  else if (input.equals("/task/add")) {
+      } else if (input.equals("/project/detail")) {
+        projectHandler.detail();
+
+      } else if (input.equals("/project/update")) {
+        projectHandler.update();
+
+      } else if (input.equals("/task/add")) {
         taskHandler.add(memberHandler);
 
       }  else if (input.equals("/task/list")) {
         taskHandler.list();
 
-      }  else if (input.equals("1")) {
+      }  else if (input.equals("/board/add")) {
         boardHandler.add();
 
-      }  else if (input.equals("2")) {
+      }  else if (input.equals("/board/list")) {
         boardHandler.list();
 
       }  else if(input.equals("/board/detail")) {
@@ -55,7 +62,7 @@ public class App {
       }  else if(input.equals("/board/update")) {
         boardHandler.update();
 
-      }  else if(input.equals("3")) {
+      }  else if(input.equals("/board/delete")) {
         boardHandler.delete();
 
       }  else {

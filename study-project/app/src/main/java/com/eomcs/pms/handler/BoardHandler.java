@@ -119,7 +119,7 @@ public class BoardHandler {
       return;
     }
 
-    System.out.printf("제목(%s)", boards[2].title);
+    //   System.out.printf("제목(%s)", boards[2].title);
     //Prompt.inputString("제목(%s)", boards[2].title)
     String label = String.format("제목(%s)? : \n",board.title);
     String title = Prompt.inputString(label);
@@ -139,24 +139,23 @@ public class BoardHandler {
 
   }
 
-
   public void delete() {
+
     System.out.println("[게시글 삭제]");
     int no = Prompt.inputInt("번호? ");
 
-    Board board = null;
-    int i = 0;
-    int j = 0;
+    //    Board board = null;
+    int boardIndex = -1;
 
-    for(i = 0 ; i < this.size ; i++) {
+    for(int i = 0 ; i < this.size ; i++) {
       if(boards[i].no == no) {
-        board = boards[i];
-        j = i;
+        //        board = boards[i];
+        boardIndex = i;
         break;
       }
     }
 
-    if(board == null) {
+    if(boardIndex == -1) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return;
     }
@@ -164,21 +163,61 @@ public class BoardHandler {
     String input = Prompt.inputString("정말 삭제하시겠습니까?(y/N)");
     if(input.equalsIgnoreCase("n") || input.length() ==0) {
       System.out.println("게시글 삭제를 취소하였습니다.");
-    } else if(input.equals("y")) {
-
-      for(i = 0 ; i < size - j; i++) {
-
-        boards[j] = boards[j+1];
-        j++;
-
-      }
-      boards[--size] = null;
-
-      System.out.println("게시글을 삭제하였습니다.");
+      return;
     }
 
 
+    for(int i = boardIndex+1; i < this.size; i++){
+      boards[i-1] = boards[i];
+    }
+    boards[--size] = null;
+    //    this.boards[this.size] = null;
+    //    this.size--;
+
+    System.out.println("게시글을 삭제하였습니다.");
+
+
   }
+
+  //  public void delete() {
+  //    System.out.println("[게시글 삭제]");
+  //    int no = Prompt.inputInt("번호? ");
+  //
+  //    Board board = null;
+  //    int i = 0;
+  //    int j = 0;
+  //
+  //    for(i = 0 ; i < this.size ; i++) {
+  //      if(boards[i].no == no) {
+  //        board = boards[i];
+  //        j = i;
+  //        break;
+  //      }
+  //    }
+  //
+  //    if(board == null) {
+  //      System.out.println("해당 번호의 게시글이 없습니다.");
+  //      return;
+  //    }
+  //
+  //    String input = Prompt.inputString("정말 삭제하시겠습니까?(y/N)");
+  //    if(input.equalsIgnoreCase("n") || input.length() ==0) {
+  //      System.out.println("게시글 삭제를 취소하였습니다.");
+  //    } else if(input.equals("y")) {
+  //
+  //      for(i = 0 ; i < size - j; i++) {
+  //
+  //        boards[j] = boards[j+1];
+  //        j++;
+  //
+  //      }
+  //      boards[--size] = null;
+  //
+  //      System.out.println("게시글을 삭제하였습니다.");
+  //    }
+  //
+  //
+  //  }
 
 
 }
