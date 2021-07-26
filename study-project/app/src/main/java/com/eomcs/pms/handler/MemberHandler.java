@@ -123,11 +123,10 @@ public class MemberHandler {
     return false;
   }
 
-
   private Member findByNo(int no) {
     for (int i = 0; i < this.size; i++) {
       if (this.members[i].no == no) {
-        return members[i];
+        return this.members[i];
       }
     }
     return null;
@@ -136,14 +135,11 @@ public class MemberHandler {
   private int indexOf(int no) {
     for (int i = 0; i < this.size; i++) {
       if (this.members[i].no == no) {
-        return  i;
-
+        return i;
       }
     }
     return -1;
   }
-
-
 
 }
 

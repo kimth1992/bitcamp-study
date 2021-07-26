@@ -92,10 +92,6 @@ public class BoardHandler {
 
     int index = indexOf(no);
 
-    // Board 인스턴스가 들어 있는 배열을 뒤져서
-    // 게시글 번호와 일치하는 Board 인스턴스를 찾는다. 
-
-
     if (index == -1) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return;
@@ -115,9 +111,7 @@ public class BoardHandler {
     System.out.println("게시글을 삭제하였습니다.");
   }
 
-
   private Board findByNo(int no) {
-
     for (int i = 0; i < this.size; i++) {
       if (this.boards[i].no == no) {
         return this.boards[i];
@@ -126,18 +120,14 @@ public class BoardHandler {
     return null;
   }
 
-
   private int indexOf(int no) {
-
     for (int i = 0; i < this.size; i++) {
       if (this.boards[i].no == no) {
-        return  i;
+        return i;
       }
     }
     return -1;
   }
-
-
 
 
 }
