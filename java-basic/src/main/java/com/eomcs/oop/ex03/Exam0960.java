@@ -19,6 +19,11 @@ public class Exam0960 {
       System.out.println("Monitor()");
     }
 
+    //    Monitor() {
+    //      this(50, 50, 2560, 1200);
+    //      System.out.println("Monitor()");
+    //    }
+
     Monitor(int bright, int contrast) {
       this.bright = bright;
       this.contrast = contrast;

@@ -31,6 +31,7 @@ public class Exam0230 {
 
     // c2가 가리키는 인스턴스를 가지고 Method Area에 있는 minus()를 호출한다.
     c2.minus(30);
+
   }
 }
 
