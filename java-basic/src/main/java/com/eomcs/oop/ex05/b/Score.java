@@ -21,6 +21,8 @@ public class Score {
     this.sum = this.kor + this.eng + this.math + this.music + this.art;
     this.aver = this.sum / 5f;
   }
+
+
 }
 
 

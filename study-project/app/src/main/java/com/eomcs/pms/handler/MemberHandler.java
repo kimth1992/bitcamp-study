@@ -11,6 +11,7 @@ public class MemberHandler {
   Member[] members = new Member[MAX_LENGTH];
   int size = 0;
 
+
   public void add() {
     System.out.println("[회원 등록]");
 

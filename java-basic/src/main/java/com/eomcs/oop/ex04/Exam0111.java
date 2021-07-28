@@ -23,6 +23,7 @@ public class Exam0111 {
     };
     String s3 = new String(bytes);
 
+
     System.out.printf("%s, %s, %s\n", s1, s2, s3);
   }
 }

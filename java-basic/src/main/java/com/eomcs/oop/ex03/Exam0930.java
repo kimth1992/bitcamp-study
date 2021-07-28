@@ -10,6 +10,8 @@ public class Exam0930 {
     int widthRes; // 해상도 너비
     int heightRes; // 해상도 높이
 
+
+
     { // 인스턴스 블록 <= 실무에서는 인스턴스 블록을 잘 사용하지 않는다. 대신에 생성자를 주로 사용한다.
       this.bright = 50;
 
@@ -32,6 +34,7 @@ public class Exam0930 {
       System.out.printf("해상도(%d x %d)\n", this.widthRes, this.heightRes);
       System.out.println("----------------------------------");
     }
+
   }
 
   public static void main(String[] args) {
@@ -43,6 +46,7 @@ public class Exam0930 {
 
     // 물론 특정 속성의 값을 바꾼 후에 사용해도 된다.
     m1.bright = 40;
+
 
     m1.display();
   }
