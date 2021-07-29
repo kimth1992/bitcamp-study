@@ -4,9 +4,9 @@ package com.eomcs.oop.ex06.c;
 public class Exam0130 {
 
   static class A {
-    String name = "A";
-    String tel = "A: 010-1111-1111";
-    boolean working = true;
+    String name;
+    String tel;
+    boolean working;
 
     void print() {
       System.out.println("A.print():");
@@ -29,6 +29,9 @@ public class Exam0130 {
 
   public static void main(String[] args) {
     A4 obj = new A4();
+    obj.name = "홍길동";
+    obj.tel = "1111-1111";
+    obj.working = "취업";
     obj.print(); 
     // A의 print() 호출 
     // - A4 가 오버라이딩 한 필드를 사용하지 않는다.

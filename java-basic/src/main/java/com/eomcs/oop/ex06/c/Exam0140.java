@@ -4,9 +4,9 @@ package com.eomcs.oop.ex06.c;
 public class Exam0140 {
 
   static class A {
-    String name = "A";
-    String tel = "A: 010-1111-1111";
-    boolean working = true;
+    String name;
+    String tel;
+    boolean working;
 
     void print() {
       System.out.println("A.print():");
@@ -29,7 +29,7 @@ public class Exam0140 {
     // - 현재 클래스에서 해당 필드를 찾는다. 없으면 상위 클래스로 따라 올라가면서 찾는다.
     // super.필드명
     // - 상위 클래스에서부터 해당 필드를 찾는다. 없으면 계속 상위 클래스로 따라 올라간다.
-    @Override
+
     void print() {
       System.out.println("A4.print():");
       System.out.printf("  => this.name(%s)\n", this.name);
@@ -42,6 +42,9 @@ public class Exam0140 {
 
   public static void main(String[] args) {
     A4 obj = new A4();
+    obj.name = "홍길동";
+    obj.tel = "1111-1111";
+    obj.working = "취업";
     obj.print(); 
     // A4에서 재정의한 print() 호출
 

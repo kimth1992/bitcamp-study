@@ -39,9 +39,11 @@ public class Exam0120 {
     //    별다른 구분없이 사용할 수 있다.
     // => 부모 클래스의 메서드와 같은 시그너처(signature)를 갖는
     //    메서드를 만든다.
+
     //    메서드 시그너처(method signature) = 함수 프로토타입(function prototype)
-    //       메서드명, 파라미터 타입/개수, 리턴 타입
-    @Override
+    //       메서드명, 파라미터 타입/개수/순서
+
+
     void print() {
       System.out.println("A3.print():");
       System.out.printf("  => this.name(%s)\n", this.name);
