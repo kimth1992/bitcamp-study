@@ -1,22 +1,22 @@
 package com.eomcs.pms.handler;
 
-public class ArrayList {
+public class ArrayList implements List {
 
   static final int MAX_LENGTH = 5;
+
   Object[] list = new Object[MAX_LENGTH];
   int size = 0;
 
   public void add(Object obj) {
-    if(size == list.length) { 
-      Object[] arr = new Object[list.length +( list.length >>1)];
-      for(int i = 0 ; i < size ; i++) {
+    if (size == list.length) {
+      Object[] arr = new Object[list.length + (list.length >> 1)];
+      for (int i = 0; i < size; i++) {
         arr[i] = list[i];
       }
-      list= arr;
+      list = arr;
     }
     this.list[this.size++] = obj;
   }
-
 
   public Object[] toArray() {
     Object[] arr = new Object[this.size]; // 배열에 저장된 값을 담을 정도의 크기를 가진 새 배열을 만든다.
