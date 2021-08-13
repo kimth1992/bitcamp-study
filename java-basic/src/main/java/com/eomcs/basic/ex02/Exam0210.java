@@ -15,6 +15,7 @@ public class Exam0210 {
     Boolean bool = new Boolean(true);           // ==> boolean
     Character c = new Character((char)0x41);    // ==> char
 
+
     // 이렇게 primitive data type에 대응하여 만든 클래스를
     // primitive data를 포장하는 객체라고 해서
     // "랩퍼(wrapper) 클래스"라 부른다.

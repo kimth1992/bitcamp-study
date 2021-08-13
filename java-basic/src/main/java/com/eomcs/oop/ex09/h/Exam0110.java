@@ -3,7 +3,10 @@ package com.eomcs.oop.ex09.h;
 
 public class Exam0110 {
   public static void main(String[] args) {
-    Tico c1 = new Tico();
+    Tico c1 = new Tico(1, 2, 3);
+    //    c1.gas = 10;
+    //    c1.brakeOil = 10;
+    //    c1.engineOil = 10;
 
     if (CarCheckInfo.validate(c1)) {
       c1.start();

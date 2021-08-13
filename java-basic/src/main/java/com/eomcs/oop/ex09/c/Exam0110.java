@@ -25,14 +25,25 @@ public class Exam0110 {
     // ProtocolB 규칙 준수!
     @Override
     public void rule2() {System.out.println("rule2()");}
+
+    public void m1() {System.out.println("m1()");}
   }
 
   void test() {
 
     ProtocolImpl obj = new ProtocolImpl();
 
+    // 클래스 래퍼런스 사용
+    obj.rule1();
+    obj.rule2();
+    obj.m1();
+
+    System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
     // 1) 인터페이스 레퍼런스로 구현체의 주소 받기
     ProtocolB b = obj;
+    b.rule2();
+    b.rule1();
+    //  b.m1(); // 컴파일 오류 => 왜? ProtocalImpl
 
     // 2) 메서드 호출
     // - 해당 인터페이스의 규칙에 따라서만 호출할 수 있다.

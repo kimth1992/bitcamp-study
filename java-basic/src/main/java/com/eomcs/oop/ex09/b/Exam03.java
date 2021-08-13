@@ -3,6 +3,8 @@ package com.eomcs.oop.ex09.b;
 
 interface MyInterface3 {
   void m1();
+  default void x() {};
+
 
   // default method:
   // - 기존 프로젝트에 영향을 끼치지 않으면서 기존 규칙에
@@ -36,6 +38,10 @@ class MyInterface3Impl implements MyInterface3 {
   @Override
   public void m2() {
     System.out.println("MyInterfaceImpl.m2()");
+  }
+  @Override
+  public void x() {
+    System.out.println("안녕?");
   }
 }
 
