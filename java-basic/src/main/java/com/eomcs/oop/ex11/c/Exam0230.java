@@ -37,11 +37,13 @@ public class Exam0230 {
     x2.test();
     System.out.println("---------------------");
 
-    B3 outer2 = new B3();
 
-    B3.X x3 = outer.new X();
+    B3 outer2 = new B3();
+    outer2.v1 = 22;
+
+    B3.X x3 = outer2.new X();
     x3.test();
-    System.out.println("---------------------");
+    System.out.println("--------------------");
 
   }
 
