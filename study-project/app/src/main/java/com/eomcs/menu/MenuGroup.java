@@ -1,6 +1,6 @@
-package com.eomcs.pms.menu;
+package com.eomcs.menu;
 
-import com.eomcs.pms.handler.Stack;
+import java.util.Stack;
 import com.eomcs.util.Prompt;
 
 // 역할
@@ -8,7 +8,8 @@ import com.eomcs.util.Prompt;
 // 
 public class MenuGroup extends Menu {
 
-  static Stack breadCrumb = new Stack();
+
+  static Stack<Menu> breadCrumb = new Stack<>();
 
   Menu[] childs = new Menu[100];
   int size;
@@ -113,7 +114,7 @@ public class MenuGroup extends Menu {
       if (path.length() > 0) {
         path += " / ";
       }
-      Menu menu = (Menu) breadCrumb.get(i);
+      Menu menu = breadCrumb.get(i);
       path += menu.title;
     }
     return path;

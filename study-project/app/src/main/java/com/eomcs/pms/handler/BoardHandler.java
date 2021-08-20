@@ -1,14 +1,15 @@
 package com.eomcs.pms.handler;
 
 import java.sql.Date;
+import java.util.List;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
 public class BoardHandler {
 
-  List boardList;
+  List<Board> boardList;
 
-  public BoardHandler(List boardList) {
+  public BoardHandler(List<Board> boardList) {
     this.boardList = boardList;
   }
 
@@ -29,10 +30,14 @@ public class BoardHandler {
   public void list() {
     System.out.println("[게시글 목록]");
 
-    Object[] list = boardList.toArray();
+    Board[] boards = new Board[boardList.size()];
+    boardList.toArray(boards);
+    //Object[] list = boardList.toArray();
 
-    for (Object obj : list) {
-      Board board = (Board) obj;
+    // 이렇게 제네릭이 적용된 List를 사용하면
+    // List에서 값을 꺼낼 때 마다 형변환 할 필요가 없어 프로그래밍이 편리하다.
+
+    for (Board board  : boards) {
       System.out.printf("%d, %s, %s, %s, %d, %d\n", 
           board.getNo(), 
           board.getTitle(), 
@@ -111,7 +116,7 @@ public class BoardHandler {
   }
 
   private Board findByNo(int no) {
-    Object[] arr = boardList.toArray();
+    Object[] arr = boardList.toArray(new Board[0]);
     for (Object obj : arr) {
       Board board = (Board) obj;
       if (board.getNo() == no) {
