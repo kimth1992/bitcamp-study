@@ -48,6 +48,8 @@ public class Exam0240 {
           return false;
         return true;
       }
+
+
     }
 
     Member m1 = new Member("홍길동", 20);
@@ -58,6 +60,35 @@ public class Exam0240 {
     list.add(m1);
     list.add(m2);
     list.add(m3);
+
+    //    list.forEach(new Consumer<Member>() {
+    //      @Override
+    //      public void accept(Member t) {
+    //        System.out.printf("%s(%d)\n", t.name, t.age);
+    //      }
+    //
+    //    });
+
+
+    //    list.forEach(t ->  System.out.printf("%s(%d)\n", t.name, t.age));
+
+    Iterator<Member> iterator = list.iterator();
+    while(iterator.hasNext()) {
+      Member m = iterator.next();
+      System.out.printf("%s(%d)\n", m.name, m.age);
+    }
+
+
+    // Member[] arr = new Member[list.size()];
+    //    Object[] arr = list.toArray();
+    // Member[] arr = list.toArray(new Member[0]); // 0자리에 list.size도 가능 => 0으로 하면 가비지 생성
+
+    // 향상된 for문의 뒤에는 iterable 형태가 있는데 이 친구는 list의 최상위 인터페이스임
+
+    //    for (Member m : list) {
+    //      System.out.printf("%s(%d)\n", m.name, m.age);
+    //    }
+
 
     class MyConsumer implements Consumer<Member> {
       @Override
@@ -70,7 +101,14 @@ public class Exam0240 {
     }
 
     list.forEach(new MyConsumer());
+    //    list.forEach(t ->  System.out.printf("%s(%d)\n", t.name, t.age));
   }
+
+
+  //  static void printUserInfo(Memeber m) {
+  //    System.out.printf("%s(%d)\n", m.name, m.age);
+  //  }
+
 }
 
 

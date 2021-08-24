@@ -58,6 +58,7 @@ public class Exam0210 {
     list.add(m2);
     list.add(m3);
 
+
     for (int i = 0; i < list.size(); i++) {
       System.out.println(list.get(i));
     }

@@ -12,9 +12,34 @@ public class Exam0320 {
   }
 
   public static void main(String[] args) {
+
+    //    class MyCalculator implements Calculator{
+    //      @Override
+    //      public int compute(int a, int b) {
+    //        return a + b;
+    //      }
+    //    }
+    //    
+    //    test(new MyCalculator());
+
+    // test(new MyCalculator());
+
+
+
+    test((a, b) -> a * b);
+
+
+    // test((int a, int b) -> a+b);
+
+
+
     // 람다 
     // 파라미터와 리턴 값이 있는 메서드 구현하기
-    test((a, b) -> a + b);
+    //    test((a, b) -> a + b);
+
+
+
+
 
   }
 
