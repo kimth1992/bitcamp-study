@@ -72,11 +72,11 @@ public class Exam0240 {
 
     //    list.forEach(t ->  System.out.printf("%s(%d)\n", t.name, t.age));
 
-    Iterator<Member> iterator = list.iterator();
-    while(iterator.hasNext()) {
-      Member m = iterator.next();
-      System.out.printf("%s(%d)\n", m.name, m.age);
-    }
+    //    Iterator<Member> iterator = list.iterator();
+    //    while(iterator.hasNext()) {
+    //      Member m = iterator.next();
+    //      System.out.printf("%s(%d)\n", m.name, m.age);
+    //    }
 
 
     // Member[] arr = new Member[list.size()];

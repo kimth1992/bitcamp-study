@@ -20,6 +20,7 @@ public class Exam0320 {
       return "Member [name=" + name + ", age=" + age + "]";
     }
 
+
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
@@ -38,6 +39,8 @@ public class Exam0320 {
         return false;
       return true;
     }
+
+
 
 
   }

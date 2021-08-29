@@ -8,6 +8,7 @@ public class Exam0410 {
   public static void main(String[] args) {
 
     HashMap<String,Object> map = new HashMap<>();
+
     map.put(null, "홍길동"); // 1) null을 key로 사용할 수 있다.
     map.put("s01", null); // 2) value가 null이 될 수 있다.
     // 3) 동기화를 지원하지 않는다.
@@ -19,6 +20,7 @@ public class Exam0410 {
     System.out.println("--------------------------------");
 
     Hashtable<String,Object> table = new Hashtable<>();
+
     //    table.put(null, "홍길동"); // 실행 오류! 1) key가 null이 될 수 없다.
     //    table.put("s02", null); // 실행 오류! 2) value가 null이 될 수 없다.
     // 3) 동기화 지원
