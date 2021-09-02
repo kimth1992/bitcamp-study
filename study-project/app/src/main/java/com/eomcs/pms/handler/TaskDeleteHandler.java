@@ -11,7 +11,7 @@ public class TaskDeleteHandler  extends AbstractTaskHandler{
   }
 
 
-  public void delete() {
+  public void execute() {
     System.out.println("[작업 삭제]");
 
     Project project = projectHandler.promptProject();

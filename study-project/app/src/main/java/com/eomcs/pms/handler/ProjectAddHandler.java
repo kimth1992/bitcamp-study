@@ -8,11 +8,11 @@ import com.eomcs.util.Prompt;
 
 public class ProjectAddHandler extends AbstractProjectHandler{
 
-  MemberPromptHandler memberPromptHandler;
+  MemberPrompt memberPromptHandler;
 
-  public ProjectAddHandler(List<Project> projectList, MemberPromptHandler memberPromptHandler) {
+  public ProjectAddHandler(List<Project> projectList, MemberPrompt memberPrompt) {
     super(projectList);
-    this.memberPromptHandler = memberPromptHandler;
+    this.memberPromptHandler = memberPrompt;
 
     Project project = new Project();
     project.setNo(101);
@@ -20,7 +20,7 @@ public class ProjectAddHandler extends AbstractProjectHandler{
     project.setContent("내용!!!");
     project.setStartDate(Date.valueOf("2021-1-1"));
     project.setEndDate(Date.valueOf("2021-2-2"));
-    project.setOwner(memberPromptHandler.memberList.get(0));
+    project.setOwner(memberPrompt.memberList.get(0));
     project.setMembers(new ArrayList<>());
 
     projectList.add(project);
@@ -31,7 +31,7 @@ public class ProjectAddHandler extends AbstractProjectHandler{
     project.setContent("내용!!!");
     project.setStartDate(Date.valueOf("2021-3-1"));
     project.setEndDate(Date.valueOf("2021-4-2"));
-    project.setOwner(memberPromptHandler.memberList.get(1));
+    project.setOwner(memberPrompt.memberList.get(1));
     project.setMembers(new ArrayList<>());
 
     projectList.add(project);
@@ -42,7 +42,7 @@ public class ProjectAddHandler extends AbstractProjectHandler{
     project.setContent("내용!!!");
     project.setStartDate(Date.valueOf("2021-5-1"));
     project.setEndDate(Date.valueOf("2021-6-2"));
-    project.setOwner(memberPromptHandler.memberList.get(2));
+    project.setOwner(memberPrompt.memberList.get(2));
     project.setMembers(new ArrayList<>());
 
     projectList.add(project);
@@ -50,7 +50,7 @@ public class ProjectAddHandler extends AbstractProjectHandler{
 
   }
 
-  public void add() {
+  public void execute() {
     System.out.println("[프로젝트 등록]");
 
     Project project = new Project();

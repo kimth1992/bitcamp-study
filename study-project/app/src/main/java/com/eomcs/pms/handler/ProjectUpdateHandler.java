@@ -8,15 +8,15 @@ import com.eomcs.util.Prompt;
 
 public class ProjectUpdateHandler extends AbstractProjectHandler {
 
-  MemberPromptHandler memberPromptHandler;
+  MemberPrompt memberPromptHandler;
 
-  public ProjectUpdateHandler(List<Project> projectList, MemberPromptHandler memberPromptHandler) {
+  public ProjectUpdateHandler(List<Project> projectList, MemberPrompt memberPromptHandler) {
     super(projectList);
     this.memberPromptHandler = memberPromptHandler;
   }
 
 
-  public void update() {
+  public void execute() {
     System.out.println("[프로젝트 변경]");
     int no = Prompt.inputInt("번호? ");
 

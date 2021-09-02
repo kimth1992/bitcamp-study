@@ -11,7 +11,7 @@ public class TaskDetailHandler  extends AbstractTaskHandler{
   }
 
 
-  public void detail() {
+  public void execute() {
     System.out.println("[작업 상세보기]");
 
     Project project = projectHandler.promptProject();
