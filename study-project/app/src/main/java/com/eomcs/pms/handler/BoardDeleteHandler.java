@@ -4,13 +4,13 @@ import java.util.List;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardDeleteHandler extends AbstractBoardHandler{
-
+public class BoardDeleteHandler extends AbstractBoardHandler {
 
   public BoardDeleteHandler(List<Board> boardList) {
     super(boardList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[게시글 삭제]");
     int no = Prompt.inputInt("번호? ");
@@ -37,8 +37,6 @@ public class BoardDeleteHandler extends AbstractBoardHandler{
 
     System.out.println("게시글을 삭제하였습니다.");
   }
-
-
 }
 
 

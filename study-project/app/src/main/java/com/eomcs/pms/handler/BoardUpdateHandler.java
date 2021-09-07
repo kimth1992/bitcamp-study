@@ -4,13 +4,13 @@ import java.util.List;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardUpdateHandler extends AbstractBoardHandler{
-
+public class BoardUpdateHandler extends AbstractBoardHandler {
 
   public BoardUpdateHandler(List<Board> boardList) {
     super(boardList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[게시글 변경]");
     int no = Prompt.inputInt("번호? ");

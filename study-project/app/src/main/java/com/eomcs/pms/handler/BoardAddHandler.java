@@ -5,13 +5,13 @@ import java.util.List;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardAddHandler extends AbstractBoardHandler{
-
+public class BoardAddHandler extends AbstractBoardHandler {
 
   public BoardAddHandler(List<Board> boardList) {
     super(boardList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[새 게시글]");
 
@@ -26,7 +26,6 @@ public class BoardAddHandler extends AbstractBoardHandler{
 
     boardList.add(board);
   }
-
 }
 
 

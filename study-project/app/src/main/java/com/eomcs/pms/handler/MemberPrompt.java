@@ -5,9 +5,10 @@ import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberPrompt{
+public class MemberPrompt {
 
   List<Member> memberList;
+
   public MemberPrompt(List<Member> memberList) {
     this.memberList = memberList;
   }
@@ -21,7 +22,7 @@ public class MemberPrompt{
     return null;
   }
 
-  protected static  Member findByName(String name, List<Member> memberList) {
+  protected static Member findByName(String name, List<Member> memberList) {
     for (Member member : memberList) {
       if (member.getName().equalsIgnoreCase(name)) {
         return member;
@@ -29,7 +30,6 @@ public class MemberPrompt{
     }
     return null;
   }
-
 
   public Member promptMember(String label) {
     while (true) {

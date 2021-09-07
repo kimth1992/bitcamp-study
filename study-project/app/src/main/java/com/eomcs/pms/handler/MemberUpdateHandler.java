@@ -4,13 +4,13 @@ import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberUpdateHandler extends AbstractMemberHandler{
+public class MemberUpdateHandler extends AbstractMemberHandler {
 
   public MemberUpdateHandler(List<Member> memberList) {
     super(memberList);
   }
 
-
+  @Override
   public void execute() {
     System.out.println("[회원 변경]");
     int no = Prompt.inputInt("번호? ");
@@ -42,7 +42,6 @@ public class MemberUpdateHandler extends AbstractMemberHandler{
 
     System.out.println("회원을 변경하였습니다.");
   }
-
 }
 
 

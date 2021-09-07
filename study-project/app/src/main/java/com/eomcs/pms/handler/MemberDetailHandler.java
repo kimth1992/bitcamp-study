@@ -4,12 +4,13 @@ import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberDetailHandler extends AbstractMemberHandler{
+public class MemberDetailHandler extends AbstractMemberHandler {
 
   public MemberDetailHandler(List<Member> memberList) {
     super(memberList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[회원 상세보기]");
     int no = Prompt.inputInt("번호? ");
@@ -27,7 +28,6 @@ public class MemberDetailHandler extends AbstractMemberHandler{
     System.out.printf("전화: %s\n", member.getTel());
     System.out.printf("등록일: %s\n", member.getRegisteredDate());
   }
-
 }
 
 

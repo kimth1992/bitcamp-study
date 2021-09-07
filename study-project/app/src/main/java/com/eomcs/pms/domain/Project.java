@@ -70,11 +70,12 @@ public class Project {
   }
 
   public String getMemberNames() {
-    if(this.members == null) {
+    if (this.members == null) {
       return "";
     }
+
     StringBuilder names = new StringBuilder();
-    for (Member member : members) {
+    for (Member member : this.members) {
       if (names.length() > 0) {
         names.append(",");
       }
@@ -91,5 +92,4 @@ public class Project {
     }
     return null;
   }
-
 }

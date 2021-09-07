@@ -4,22 +4,21 @@ import java.util.List;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardSearchHandler extends AbstractBoardHandler{
-
+public class BoardSearchHandler extends AbstractBoardHandler {
 
   public BoardSearchHandler(List<Board> boardList) {
     super(boardList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[게시글 검색]");
 
     String input = Prompt.inputString("검색어? ");
 
-
     for (Board board : boardList) {
-      if(!board.getTitle().contains(input) && 
-          !board.getContent().contains(input)&&
+      if (!board.getTitle().contains(input) &&
+          !board.getContent().contains(input) &&
           !board.getWriter().getName().contains(input)) {
         continue;
       }
@@ -32,7 +31,6 @@ public class BoardSearchHandler extends AbstractBoardHandler{
           board.getLike());
     }
   }
-
 }
 
 

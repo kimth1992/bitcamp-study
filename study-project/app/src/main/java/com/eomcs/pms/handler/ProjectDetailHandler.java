@@ -4,14 +4,13 @@ import java.util.List;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.util.Prompt;
 
-public class ProjectDetailHandler extends AbstractProjectHandler{
-
-  MemberListHandler memberHandler;
+public class ProjectDetailHandler extends AbstractProjectHandler {
 
   public ProjectDetailHandler(List<Project> projectList) {
     super(projectList);
   }
 
+  @Override
   public void execute() {
     System.out.println("[프로젝트 상세보기]");
     int no = Prompt.inputInt("번호? ");
@@ -30,8 +29,6 @@ public class ProjectDetailHandler extends AbstractProjectHandler{
     System.out.printf("만든이: %s\n", project.getOwner().getName());
     System.out.printf("팀원: %s\n", project.getMemberNames());
   }
-
-
 }
 
 

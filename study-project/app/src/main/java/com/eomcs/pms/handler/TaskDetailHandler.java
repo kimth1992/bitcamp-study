@@ -4,17 +4,17 @@ import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.domain.Task;
 import com.eomcs.util.Prompt;
 
-public class TaskDetailHandler  extends AbstractTaskHandler{
+public class TaskDetailHandler extends AbstractTaskHandler {
 
-  public TaskDetailHandler(AbstractProjectHandler projectHandler) {
-    super(projectHandler);
+  public TaskDetailHandler(ProjectPrompt projectPrompt) {
+    super(projectPrompt);
   }
 
-
+  @Override
   public void execute() {
     System.out.println("[작업 상세보기]");
 
-    Project project = projectHandler.promptProject();
+    Project project = projectPrompt.promptProject();
     if (project == null) {
       System.out.println("작업 조회를 취소합니다.");
       return;
@@ -37,8 +37,6 @@ public class TaskDetailHandler  extends AbstractTaskHandler{
     System.out.printf("상태: %s\n", getStatusLabel(task.getStatus()));
     System.out.printf("담당자: %s\n", task.getOwner().getName());
   }
-
-
 }
 
 

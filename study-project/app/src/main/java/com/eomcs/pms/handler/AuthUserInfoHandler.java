@@ -2,8 +2,9 @@ package com.eomcs.pms.handler;
 
 import com.eomcs.pms.domain.Member;
 
-public class AuthUserInfoHandler implements Command{
+public class AuthUserInfoHandler implements Command {
 
+  @Override
   public void execute() {
     System.out.println("[내정보]");
 

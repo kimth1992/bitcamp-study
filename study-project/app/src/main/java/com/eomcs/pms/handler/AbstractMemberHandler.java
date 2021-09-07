@@ -3,9 +3,9 @@ package com.eomcs.pms.handler;
 import java.util.List;
 import com.eomcs.pms.domain.Member;
 
-public abstract class AbstractMemberHandler implements Command{
+public abstract class AbstractMemberHandler implements Command {
 
-  List<Member> memberList;
+  protected List<Member> memberList;
 
   public AbstractMemberHandler(List<Member> memberList) {
     this.memberList = memberList;
@@ -19,7 +19,6 @@ public abstract class AbstractMemberHandler implements Command{
     }
     return null;
   }
-
 }
 
 
