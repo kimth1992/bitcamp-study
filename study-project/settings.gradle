@@ -15,3 +15,5 @@ rootProject.name = 'study-project'
 // => 빌드 작업을 수행할 때 sub project에 있는 build.gradle 파일을 참조한다.
 
 include('app')
+include('app-client')
+include('app-server')

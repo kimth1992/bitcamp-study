@@ -1,9 +1,9 @@
 package com.eomcs.pms.domain;
 
-import java.io.Serializable;
 import java.sql.Date;
+import com.eomcs.csv.CsvValue;
 
-public class Member implements Serializable{
+public class Member implements CsvValue{
   private int no;
   private String name;
   private String email;
@@ -11,6 +11,34 @@ public class Member implements Serializable{
   private String photo;
   private String tel;
   private Date registeredDate;
+
+  @Override
+  public void loadCsv(String csv) {
+
+    String[] values = csv.split(",");
+
+    this.setNo(Integer.valueOf(values[0]));
+    this.setName(values[1]);
+    this.setEmail(values[2]);
+    this.setPassword(values[3]);
+    this.setPhoto(values[4]);
+    this.setTel(values[5]);
+    this.setRegisteredDate(Date.valueOf(values[6]));
+
+  }
+
+  // 다음 메서드는 CsvValue 규칙에 따라 만든 것이다.
+  @Override
+  public String toCsvString() {
+    return String.format("%d,%s,%s,%s,%s,%s,%s",
+        this.getNo(),
+        this.getName(),
+        this.getEmail(),
+        this.getPassword(),
+        this.getPhoto(),
+        this.getTel(),
+        this.getRegisteredDate());
+  }
 
   @Override
   public String toString() {

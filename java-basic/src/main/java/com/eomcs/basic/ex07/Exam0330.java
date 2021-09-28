@@ -2,6 +2,7 @@
 package com.eomcs.basic.ex07;
 
 import java.util.HashSet;
+import java.util.Stack;
 
 public class Exam0330 {
 
@@ -32,6 +33,7 @@ public class Exam0330 {
 
   public static void main(String[] args) {
 
+    Stack st = new Stack();
     Member v1 = new Member("홍길동", 20);
     Member v2 = new Member("임꺽정", 30);
     Member v3 = new Member("유관순", 16);

@@ -1,9 +1,9 @@
 package com.eomcs.pms.domain;
 
-import java.io.Serializable;
 import java.sql.Date;
+import com.eomcs.csv.CsvValue;
 
-public class Task implements Serializable{
+public class Task implements CsvValue{
   private int no;
   private String content;
   private Date deadline;
@@ -16,6 +16,39 @@ public class Task implements Serializable{
     return "Task [no=" + no + ", content=" + content + ", deadline=" + deadline + ", owner=" + owner
         + ", status=" + status + ", project=" + project + "]";
   }
+
+
+
+  @Override
+  public String toCsvString() {
+    return String.format("%d,%s,%s,%d,%d,%s",
+        this.getNo(),
+        this.getContent(),
+        this.getDeadline(),
+        this.getStatus(),
+        this.getOwner().getNo(),
+        this.getOwner().getName());
+  }
+
+  @Override
+  public void loadCsv(String csv) {
+
+    String[] values = csv.split(",");
+
+    this.setNo(Integer.valueOf(values[0]));
+    this.setContent(values[1]);
+    this.setDeadline(Date.valueOf(values[2]));
+    this.setStatus(Integer.valueOf(values[3]));
+
+    Member m = new Member();
+    m.setNo(Integer.valueOf(values[4]));
+    m.setName(values[5]);
+
+    this.setOwner(m);
+
+  }
+
+
   public int getNo() {
     return no;
   }
@@ -52,5 +85,7 @@ public class Task implements Serializable{
   public void setOwner(Member owner) {
     this.owner = owner;
   }
+
+
 
 }
