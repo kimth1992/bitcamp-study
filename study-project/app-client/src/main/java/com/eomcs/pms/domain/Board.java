@@ -18,28 +18,6 @@ public class Board {
         + "]";
   }
 
-
-  public static Board valueOfCsv(String csv) {
-    String[] values = csv.split(",");
-
-    // 3) 콤마로 분리한 값을 Board 객체에 담는다.
-    Board b = new Board();
-    b.setNo(Integer.valueOf(values[0]));
-    b.setTitle(values[1]);
-    b.setContent(values[2]);
-    b.setRegisteredDate(Date.valueOf(values[3]));
-    b.setViewCount(Integer.valueOf(values[4]));
-    b.setLike(Integer.valueOf(values[5]));
-
-    Member m = new Member();
-    m.setNo(Integer.valueOf(values[6]));
-    m.setName(values[7]);
-
-    b.setWriter(m);
-
-    return b;
-  }
-
   public int getNo() {
     return no;
   }
@@ -82,8 +60,5 @@ public class Board {
   public void setWriter(Member writer) {
     this.writer = writer;
   }
-
-
-
 
 }

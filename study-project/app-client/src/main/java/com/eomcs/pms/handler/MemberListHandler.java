@@ -13,15 +13,15 @@ public class MemberListHandler implements Command {
   }
 
   @Override
-  public void execute(CommandRequest request) throws Exception{
+  public void execute(CommandRequest request) throws Exception {
     System.out.println("[회원 목록]");
 
     requestAgent.request("member.selectList", null);
 
     if (requestAgent.getStatus().equals(RequestAgent.FAIL)) {
-      System.out.println("목록 조회 실패");
+      System.out.println("목록 조회 실패!");
       return;
-    } 
+    }
 
     Collection<Member> memberList = requestAgent.getObjects(Member.class);
 
