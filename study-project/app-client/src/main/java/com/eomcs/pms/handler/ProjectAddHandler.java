@@ -1,6 +1,8 @@
 package com.eomcs.pms.handler;
 
+import org.apache.ibatis.session.SqlSession;
 import com.eomcs.pms.dao.ProjectDao;
+import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.util.Prompt;
 
@@ -8,10 +10,12 @@ public class ProjectAddHandler implements Command {
 
   ProjectDao projectDao;
   MemberPrompt memberPrompt;
+  SqlSession sqlSession;
 
-  public ProjectAddHandler(ProjectDao projectDao, MemberPrompt memberPrompt) {
+  public ProjectAddHandler(ProjectDao projectDao, MemberPrompt memberPrompt,  SqlSession sqlSession) {
     this.projectDao = projectDao;
     this.memberPrompt = memberPrompt;
+    this.sqlSession = sqlSession;
   }
 
   @Override
@@ -27,7 +31,16 @@ public class ProjectAddHandler implements Command {
     project.setOwner(AuthLoginHandler.getLoginUser());
     project.setMembers(memberPrompt.promptMembers("팀원?(완료: 빈 문자열) "));
 
-    projectDao.insert(project);
+    try {
+      projectDao.insert(project);
+
+      for (Member m : project.getMembers()) {
+        projectDao.insertMember(project.getNo(), m.getNo());
+      }
+      sqlSession.commit();
+    } catch (Exception e) {
+      sqlSession.rollback();
+    }
 
     System.out.println("프로젝트를 저장했습니다!");
   }

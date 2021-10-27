@@ -1,47 +1,39 @@
 package com.eomcs.pms.handler;
 
-import java.sql.Date;
+import org.apache.ibatis.session.SqlSession;
+import com.eomcs.pms.dao.TaskDao;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.pms.domain.Task;
 import com.eomcs.util.Prompt;
 
-public class TaskUpdateHandler extends AbstractTaskHandler {
+public class TaskUpdateHandler implements Command {
 
-  public TaskUpdateHandler(ProjectPrompt projectPrompt) {
-    super(projectPrompt);
+  TaskDao taskDao;
+  ProjectPrompt projectPrompt;
+  SqlSession sqlSession;
+
+  public TaskUpdateHandler(TaskDao taskDao, SqlSession sqlSession) {
+    this.taskDao = taskDao;
+    this.sqlSession = sqlSession;
   }
 
   @Override
-  public void execute(CommandRequest request) {
+  public void execute(CommandRequest request) throws Exception {
     System.out.println("[작업 변경]");
 
-    Project project = projectPrompt.promptProject();
-    if (project == null) {
-      System.out.println("작업 변경을 취소합니다.");
-      return;
-    }
+    Project project = (Project) request.getAttribute("project");
 
     if (project.getOwner().getNo() != AuthLoginHandler.getLoginUser().getNo()) {
       System.out.println("이 프로젝트의 관리자가 아닙니다.");
       return;
     }
 
-    printTasks(project);
+    Task task = (Task) request.getAttribute("task");
+    task.setContent(Prompt.inputString(String.format("내용(%s)? ", task.getContent())));
+    task.setDeadline(Prompt.inputDate(String.format("마감일(%s)? ", task.getDeadline())));
+    task.setStatus(new TaskHandlerHelper(taskDao).promptStatus(task.getStatus().getNo()));
 
-    System.out.println("-------------------------------------");
-
-    int taskNo = Prompt.inputInt("변경할 작업 번호? ");
-
-    Task task = project.findTaskByNo(taskNo);
-    if (task == null) {
-      System.out.println("해당 번호의 작업이 없습니다.");
-      return;
-    }
-
-    String content = Prompt.inputString(String.format("내용(%s)? ", task.getContent()));
-    Date deadline = Prompt.inputDate(String.format("마감일(%s)? ", task.getDeadline()));
-    int status = promptStatus(task.getStatus());
     Member owner = MemberPrompt.promptMember(
         String.format("담당자(%s)?(취소: 빈 문자열) ", task.getOwner().getName()), 
         project.getMembers());
@@ -56,10 +48,8 @@ public class TaskUpdateHandler extends AbstractTaskHandler {
       return;
     }
 
-    task.setContent(content);
-    task.setDeadline(deadline);
-    task.setStatus(status);
-    task.setOwner(owner);
+    taskDao.update(task);
+    sqlSession.commit();
 
     System.out.println("작업를 변경하였습니다.");
   }

@@ -1,21 +1,26 @@
 package com.eomcs.pms.handler;
 
-import java.util.List;
+import org.apache.ibatis.session.SqlSession;
+import com.eomcs.pms.dao.BoardDao;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
 
-public class BoardUpdateHandler extends AbstractBoardHandler {
+public class BoardUpdateHandler implements Command {
 
-  public BoardUpdateHandler(List<Board> boardList) {
-    super(boardList);
+  BoardDao boardDao;
+  SqlSession sqlSession;
+
+  public BoardUpdateHandler(BoardDao boardDao, SqlSession sqlSession) {
+    this.boardDao = boardDao;
+    this.sqlSession = sqlSession;
   }
 
   @Override
-  public void execute(CommandRequest request) {
+  public void execute(CommandRequest request) throws Exception {
     System.out.println("[게시글 변경]");
-    int no = (int)request.getAttribute("no");
+    int no = (int) request.getAttribute("no");
 
-    Board board = findByNo(no);
+    Board board = boardDao.findByNo(no);
 
     if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다.");
@@ -36,8 +41,13 @@ public class BoardUpdateHandler extends AbstractBoardHandler {
       return;
     }
 
+
     board.setTitle(title);
     board.setContent(content);
+
+    boardDao.update(board);
+    sqlSession.commit();
+
     System.out.println("게시글을 변경하였습니다.");
   }
 }

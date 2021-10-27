@@ -1,17 +1,22 @@
 package com.eomcs.pms.handler;
 
-import java.util.List;
+import java.util.Collection;
+import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.domain.Member;
 
-public class MemberListHandler extends AbstractMemberHandler {
+public class MemberListHandler implements Command {
 
-  public MemberListHandler(List<Member> memberList) {
-    super(memberList);
+  MemberDao memberDao;
+
+  public MemberListHandler(MemberDao memberDao) {
+    this.memberDao = memberDao;
   }
 
   @Override
-  public void execute(CommandRequest request) {
+  public void execute(CommandRequest request) throws Exception {
     System.out.println("[회원 목록]");
+
+    Collection<Member> memberList = memberDao.findAll();
 
     for (Member member : memberList) {
       System.out.printf("%d, %s, %s, %s, %s\n", 

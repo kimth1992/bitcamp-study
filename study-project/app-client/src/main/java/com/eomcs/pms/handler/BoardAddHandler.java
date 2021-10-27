@@ -1,6 +1,7 @@
 package com.eomcs.pms.handler;
 
 import java.sql.Date;
+import org.apache.ibatis.session.SqlSession;
 import com.eomcs.pms.dao.BoardDao;
 import com.eomcs.pms.domain.Board;
 import com.eomcs.util.Prompt;
@@ -8,9 +9,11 @@ import com.eomcs.util.Prompt;
 public class BoardAddHandler implements Command {
 
   BoardDao boardDao;
+  SqlSession sqlSession;
 
-  public BoardAddHandler(BoardDao boardDao) {
+  public BoardAddHandler(BoardDao boardDao, SqlSession sqlSession) {
     this.boardDao = boardDao;
+    this.sqlSession = sqlSession;
   }
 
   @Override
@@ -19,7 +22,6 @@ public class BoardAddHandler implements Command {
 
     Board board = new Board();
 
-    board.setNo(Prompt.inputInt("번호? "));
     board.setTitle(Prompt.inputString("제목? "));
     board.setContent(Prompt.inputString("내용? "));
 
@@ -27,6 +29,7 @@ public class BoardAddHandler implements Command {
     board.setRegisteredDate(new Date(System.currentTimeMillis()));
 
     boardDao.insert(board);
+    sqlSession.commit();
 
     System.out.println("게시글을 저장했습니다.");
   }

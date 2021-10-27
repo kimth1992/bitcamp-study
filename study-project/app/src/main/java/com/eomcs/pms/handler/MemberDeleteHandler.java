@@ -1,21 +1,26 @@
 package com.eomcs.pms.handler;
 
-import java.util.List;
+import org.apache.ibatis.session.SqlSession;
+import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberDeleteHandler extends AbstractMemberHandler {
+public class MemberDeleteHandler implements Command {
 
-  public MemberDeleteHandler(List<Member> memberList) {
-    super(memberList);
+  MemberDao memberDao;
+  SqlSession sqlSession;
+
+  public MemberDeleteHandler(MemberDao memberDao, SqlSession sqlSession) {
+    this.memberDao = memberDao;
+    this.sqlSession = sqlSession;
   }
 
   @Override
-  public void execute(CommandRequest request) {
+  public void execute(CommandRequest request) throws Exception {
     System.out.println("[회원 삭제]");
-    int no = Prompt.inputInt("번호? ");
+    int no = (int) request.getAttribute("no");
 
-    Member member = findByNo(no);
+    Member member = memberDao.findByNo(no);
 
     if (member == null) {
       System.out.println("해당 번호의 회원이 없습니다.");
@@ -28,7 +33,8 @@ public class MemberDeleteHandler extends AbstractMemberHandler {
       return;
     }
 
-    memberList.remove(member);
+    memberDao.delete(no);
+    sqlSession.commit();
 
     System.out.println("회원을 삭제하였습니다.");
   }

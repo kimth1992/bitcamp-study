@@ -1,21 +1,26 @@
 package com.eomcs.pms.handler;
 
-import java.util.List;
+import org.apache.ibatis.session.SqlSession;
+import com.eomcs.pms.dao.ProjectDao;
 import com.eomcs.pms.domain.Project;
 import com.eomcs.util.Prompt;
 
-public class ProjectDeleteHandler extends AbstractProjectHandler {
+public class ProjectDeleteHandler implements Command {
 
-  public ProjectDeleteHandler(List<Project> projectList) {
-    super(projectList);
+  ProjectDao projectDao;
+  SqlSession sqlSession;
+
+  public ProjectDeleteHandler(ProjectDao projectDao, SqlSession sqlSession) {
+    this.projectDao = projectDao;
+    this.sqlSession = sqlSession;
   }
 
   @Override
-  public void execute(CommandRequest request) {
+  public void execute(CommandRequest request) throws Exception {
     System.out.println("[프로젝트 삭제]");
-    int no = Prompt.inputInt("번호? ");
+    int no = (int) request.getAttribute("no");
 
-    Project project = findByNo(no);
+    Project project = projectDao.findByNo(no);
 
     if (project == null) {
       System.out.println("해당 번호의 프로젝트가 없습니다.");
@@ -33,7 +38,15 @@ public class ProjectDeleteHandler extends AbstractProjectHandler {
       return;
     }
 
-    projectList.remove(project);
+    try {
+      projectDao.deleteMember(project.getNo());
+      projectDao.delete(no);
+      sqlSession.commit();
+    } catch (Exception e) {
+      // 예외가 발생하기 전에 성공한 작업이 있으면 모두 취소한다.
+      // 그래야 다음 작업에 영향을 끼치지 않는다.
+      sqlSession.rollback();
+    }
 
     System.out.println("프로젝트를 삭제하였습니다.");
   }

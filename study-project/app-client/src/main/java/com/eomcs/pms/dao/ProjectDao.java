@@ -8,11 +8,13 @@ import com.eomcs.pms.domain.Task;
 // - 게시글 데이터를 처리하는 객체 사용법을 정의한다.
 public interface ProjectDao {
   void insert(Project project) throws Exception;
+  void insertMember(int projectNo, int memberNo) throws Exception;
   List<Project> findAll() throws Exception;
   Project findByNo(int no) throws Exception;
   void update(Project project) throws Exception;
   void delete(int no) throws Exception;
   void insertTask(Task task) throws Exception;
   void deleteTask(int projectNo, int taskNo) throws Exception;
+  void deleteMember(int projectNo) throws Exception;
   void updateTask(Task task) throws Exception;
 }
