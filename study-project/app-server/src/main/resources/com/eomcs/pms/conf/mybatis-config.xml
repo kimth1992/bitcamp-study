@@ -23,7 +23,7 @@
   </environments>
   
   <mappers>
-  <package name="com.eomcs.pms.dao"/>
+    <package name="com.eomcs.pms.dao"/>
   </mappers>
 </configuration>
 

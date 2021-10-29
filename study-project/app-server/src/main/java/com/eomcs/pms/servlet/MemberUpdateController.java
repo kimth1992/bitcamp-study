@@ -1,7 +1,6 @@
 package com.eomcs.pms.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,7 +13,7 @@ import com.eomcs.pms.dao.MemberDao;
 import com.eomcs.pms.domain.Member;
 
 @WebServlet("/member/update")
-public class MemberUpdateHandler extends HttpServlet {
+public class MemberUpdateController extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   SqlSession sqlSession;
@@ -37,37 +36,23 @@ public class MemberUpdateHandler extends HttpServlet {
       Member member = memberDao.findByNo(no);
 
       if (member == null) {
-        throw new Exception("해당 번호의 회원이 없습니다.<br>");
+        throw new Exception("해당 번호의 회원이 없습니다.");
+      } 
 
-      } else {
+      member.setName(request.getParameter("name"));
+      member.setEmail(request.getParameter("email"));
+      member.setPassword(request.getParameter("password"));
+      member.setPhoto(request.getParameter("photo"));
+      member.setTel(request.getParameter("tel"));
 
-        member.setName(request.getParameter("name"));
-        member.setEmail(request.getParameter("email"));
-        member.setPassword(request.getParameter("password"));
-        member.setPhoto(request.getParameter("photo"));
-        member.setTel(request.getParameter("tel"));
-
-        memberDao.update(member);
-        sqlSession.commit();
-
-      }
+      memberDao.update(member);
+      sqlSession.commit();
 
       response.sendRedirect("list");
 
     } catch (Exception e) {
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
-      out.println("<html>");
-      out.println("<head>");
-      out.println("  <title>회원변경</title>");
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>회원변경결과</h1>");
-      out.println("회원 변경 오류!");
-      out.println("<a href='list'>[목록]</a><br>");
-      out.println("</body>");
-      out.println("</html>");
-      e.printStackTrace();
+      request.setAttribute("error", e);
+      request.getRequestDispatcher("/Error.jsp").forward(request, response);
     }
   }
 }
